@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import '../models/Item.dart';
+import 'package:moviebloc/src/models/Upcoming.dart';
 import '../blocs/movies_bloc.dart';
 import 'movie_detail.dart';
 import '../blocs/movie_detail_bloc_provider.dart';
 
-class MovieList extends StatefulWidget {
+class MovieUpcoming extends StatefulWidget {
   @override
-  _MovieListState createState() => _MovieListState();
+  _MovieUpcomingState createState() => _MovieUpcomingState();
 }
 
-class _MovieListState extends State<MovieList> {
+class _MovieUpcomingState extends State<MovieUpcoming> {
   final GlobalKey<ScaffoldState> drawerKey = new GlobalKey<ScaffoldState>();
 
   @override
   void initState(){
     super.initState();
-    bloc.fetchAllMovies();
+    bloc.fetchUpcomingMovies();
   }
 
   @override
@@ -76,12 +76,12 @@ class _MovieListState extends State<MovieList> {
             Center(
               child: Container(
                 margin: EdgeInsets.only(bottom: 20),
-                child: Text("Cek Film favorit mu disini. Nikmati daftar film terpopuler saat ini", textAlign: TextAlign.center, style: TextStyle(fontSize: MediaQuery.of(context).size.width / 20, fontWeight: FontWeight.w400)),
+                child: Text("Film yang akan datang nanti, check this out", textAlign: TextAlign.center, style: TextStyle(fontSize: MediaQuery.of(context).size.width / 20, fontWeight: FontWeight.w400)),
               ),
             ),
             StreamBuilder(
-              stream: bloc.allMovies,
-              builder: (context, AsyncSnapshot<Item> snapshot){
+              stream: bloc.upMovies,
+              builder: (context, AsyncSnapshot<Upcoming> snapshot){
                 if(snapshot.hasData){
                   return GridView.builder(
                     itemCount: snapshot.data.results.length,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:moviebloc/src/blocs/movie_detail_bloc.dart';
 import 'package:moviebloc/src/blocs/movie_detail_bloc_provider.dart';
 import '../models/Trailer.dart';
+import 'dart:async';
 
 class MovieDetail extends StatefulWidget {
   final posterUrl;
@@ -124,7 +125,7 @@ class MovieDetailState extends State<MovieDetail> {
                           right: 10.0),
                     ),
                     Text(
-                      releaseDate,
+                      releaseDate.toString(),
                       style: TextStyle(
                         fontSize: 18.0,
                       ),

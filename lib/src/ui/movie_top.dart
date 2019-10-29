@@ -4,18 +4,18 @@ import '../blocs/movies_bloc.dart';
 import 'movie_detail.dart';
 import '../blocs/movie_detail_bloc_provider.dart';
 
-class MovieList extends StatefulWidget {
+class MovieTop extends StatefulWidget {
   @override
-  _MovieListState createState() => _MovieListState();
+  _MovieTopState createState() => _MovieTopState();
 }
 
-class _MovieListState extends State<MovieList> {
+class _MovieTopState extends State<MovieTop> {
   final GlobalKey<ScaffoldState> drawerKey = new GlobalKey<ScaffoldState>();
 
   @override
   void initState(){
     super.initState();
-    bloc.fetchAllMovies();
+    bloc.fetchTopMovies();
   }
 
   @override
@@ -76,11 +76,11 @@ class _MovieListState extends State<MovieList> {
             Center(
               child: Container(
                 margin: EdgeInsets.only(bottom: 20),
-                child: Text("Cek Film favorit mu disini. Nikmati daftar film terpopuler saat ini", textAlign: TextAlign.center, style: TextStyle(fontSize: MediaQuery.of(context).size.width / 20, fontWeight: FontWeight.w400)),
+                child: Text("Film paling TOP saat ini", textAlign: TextAlign.center, style: TextStyle(fontSize: MediaQuery.of(context).size.width / 20, fontWeight: FontWeight.w400)),
               ),
             ),
             StreamBuilder(
-              stream: bloc.allMovies,
+              stream: bloc.topMovies,
               builder: (context, AsyncSnapshot<Item> snapshot){
                 if(snapshot.hasData){
                   return GridView.builder(
