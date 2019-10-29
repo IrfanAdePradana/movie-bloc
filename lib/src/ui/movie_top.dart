@@ -109,6 +109,7 @@ class _MovieTopState extends State<MovieTop> {
                                     releaseDate: snapshot.data.results[index].releaseDate,
                                     voteAverage: snapshot.data.results[index].voteAverage.toString(),
                                     movieId: snapshot.data.results[index].id,
+                                    popularity: snapshot.data.results[index].popularity
                                   ),
                                 );
                               }

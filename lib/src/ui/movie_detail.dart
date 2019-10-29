@@ -11,6 +11,7 @@ class MovieDetail extends StatefulWidget {
   final String title;
   final String voteAverage;
   final int movieId;
+  final popularity;
 
   MovieDetail({
     this.title,
@@ -19,6 +20,7 @@ class MovieDetail extends StatefulWidget {
     this.releaseDate,
     this.voteAverage,
     this.movieId,
+    this.popularity
   });
 
   @override
@@ -30,6 +32,7 @@ class MovieDetail extends StatefulWidget {
       releaseDate: releaseDate,
       voteAverage: voteAverage,
       movieId: movieId,
+      popularity: popularity
     );
   }
 }
@@ -41,6 +44,7 @@ class MovieDetailState extends State<MovieDetail> {
   final String title;
   final String voteAverage;
   final int movieId;
+  final popularity;
 
   MovieDetailBloc bloc;
 
@@ -51,6 +55,7 @@ class MovieDetailState extends State<MovieDetail> {
     this.releaseDate,
     this.voteAverage,
     this.movieId,
+    this.popularity
   });
 
   @override
@@ -70,7 +75,7 @@ class MovieDetailState extends State<MovieDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        top: false,
+        top: true,
         bottom: false,
         child: NestedScrollView(
           headerSliverBuilder: (BuildContext context,
@@ -124,12 +129,38 @@ class MovieDetailState extends State<MovieDetail> {
                       margin: EdgeInsets.only(left: 10.0,
                           right: 10.0),
                     ),
+                    Icon(
+                      Icons.date_range,
+                      color: Colors.red,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 1.0,
+                          right: 1.0),
+                    ),
                     Text(
                       releaseDate.toString(),
                       style: TextStyle(
                         fontSize: 18.0,
                       ),
                     ),
+                    Container(
+                      margin: EdgeInsets.only(left: 10.0,
+                          right: 10.0),
+                    ),
+                    Icon(
+                      Icons.person,
+                      color: Colors.red,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 1.0,
+                          right: 1.0),
+                    ),
+                    Text(
+                      popularity.toString(),
+                      style: TextStyle(
+                        fontSize: 18.0,
+                      ),
+                    )
                   ],
                 ),
                 Container(margin: EdgeInsets.only(top: 8.0,
